@@ -6,31 +6,23 @@
 <title>Garimpo de Motos - Sorocaba</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0e0f0f;--bg2:#161717;--bg3:#1e1f1f;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.18);
-  --text:#f0efec;--text2:#9a9895;--text3:#5a5856;
-  --green:#2ecc71;--gbg:rgba(46,204,113,0.1);--gborder:rgba(46,204,113,0.3);
-  --amber:#f39c12;--abg:rgba(243,156,18,0.1);
-  --red:#e74c3c;--rbg:rgba(231,76,60,0.1);
-  --r:10px;--rl:14px;
-}
+:root{--bg:#0e0f0f;--bg2:#161717;--bg3:#1e1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.18);--text:#f0efec;--text2:#9a9895;--text3:#5a5856;--green:#2ecc71;--gbg:rgba(46,204,113,0.1);--gborder:rgba(46,204,113,0.3);--amber:#f39c12;--abg:rgba(243,156,18,0.1);--red:#e74c3c;--rbg:rgba(231,76,60,0.1);--r:10px;--rl:14px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
 .hdr{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-ico{width:30px;height:30px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .logo-ico svg{width:16px;height:16px}
 .logo-name{font-size:15px;font-weight:600}
-.logo-sub{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
-.status{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.logo-sub{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace}
+.status{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace}
 .wrap{display:flex;height:calc(100vh - 65px)}
 .sidebar{width:290px;min-width:290px;border-right:1px solid var(--border);padding:18px 16px;overflow-y:auto}
 .main{flex:1;overflow-y:auto;padding:20px 24px;background:var(--bg2)}
-.sec{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;font-family:'DM Mono',monospace}
+.sec{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;font-family:"DM Mono",monospace}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
-.field select,.field input{width:100%;height:36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:13px;padding:0 10px;font-family:'DM Sans',sans-serif;-webkit-appearance:none;appearance:none;cursor:pointer}
+.field select,.field input{width:100%;height:36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:13px;padding:0 10px;font-family:"DM Sans",sans-serif;-webkit-appearance:none;appearance:none;cursor:pointer}
 .field select:focus,.field input:focus{outline:none;border-color:var(--border2)}
 optgroup{color:var(--text2);font-style:normal;font-size:11px}
 option{color:var(--text);background:var(--bg3)}
@@ -41,35 +33,34 @@ option{color:var(--text);background:var(--bg3)}
 .thr-row{display:flex;align-items:center;gap:10px}
 .thr-row input[type=range]{flex:1;height:4px;-webkit-appearance:none;background:var(--border2);border-radius:2px;outline:none;border:none;padding:0}
 .thr-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--green);cursor:pointer}
-.thr-val{font-size:17px;font-weight:600;color:var(--green);font-family:'DM Mono',monospace;min-width:40px;text-align:right}
+.thr-val{font-size:17px;font-weight:600;color:var(--green);font-family:"DM Mono",monospace;min-width:40px;text-align:right}
 .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
 .chip{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:20px;border:1px solid var(--border);font-size:11px;cursor:pointer;color:var(--text2);transition:all .15s;user-select:none}
 .chip.on{border-color:var(--gborder);background:var(--gbg);color:var(--green)}
 .dot{width:6px;height:6px;border-radius:50%}
-.btn-run{width:100%;height:44px;background:var(--green);color:#0a1a10;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;transition:opacity .15s;margin-top:4px}
+.btn-run{width:100%;height:44px;background:var(--green);color:#0a1a10;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:"DM Sans",sans-serif;transition:opacity .15s;margin-top:4px}
 .btn-run:hover{opacity:.88}
 .btn-run:disabled{opacity:.4;cursor:not-allowed}
-/* main area */
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:var(--text3);text-align:center}
 .empty svg{width:40px;height:40px;opacity:.3}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
 .mc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
-.mc-lbl{font-size:10px;color:var(--text3);margin-bottom:3px;font-family:'DM Mono',monospace}
+.mc-lbl{font-size:10px;color:var(--text3);margin-bottom:3px;font-family:"DM Mono",monospace}
 .mc-val{font-size:20px;font-weight:600}
 .refs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .rc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
-.rc-lbl{font-size:10px;color:var(--text3);margin-bottom:2px;font-family:'DM Mono',monospace}
+.rc-lbl{font-size:10px;color:var(--text3);margin-bottom:2px;font-family:"DM Mono",monospace}
 .rc-val{font-size:17px;font-weight:600}
 .rc-sub{font-size:11px;color:var(--text3);margin-top:1px}
 .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rh-count{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.rh-count{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace}
 .card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;margin-bottom:8px;transition:border-color .15s}
 .card:hover{border-color:var(--border2)}
 .card.alert{border-left:3px solid var(--green);background:linear-gradient(to right,rgba(46,204,113,.06),var(--bg3) 40%)}
 .cr1{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;gap:8px}
 .ct{font-size:13px;font-weight:500;flex:1}
 .bdgs{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0}
-.b{font-size:10px;padding:2px 7px;border-radius:6px;font-family:'DM Mono',monospace;border:1px solid transparent;white-space:nowrap}
+.b{font-size:10px;padding:2px 7px;border-radius:6px;font-family:"DM Mono",monospace;border:1px solid transparent;white-space:nowrap}
 .bml{background:#1f1c00;color:#ddb800;border-color:rgba(221,184,0,.2)}
 .balert{background:var(--gbg);color:var(--green);border-color:var(--gborder)}
 .bwarn{background:var(--abg);color:var(--amber);border-color:rgba(243,156,18,.25)}
@@ -77,25 +68,23 @@ option{color:var(--text);background:var(--bg3)}
 .cr2{display:flex;gap:12px;font-size:12px;color:var(--text2);margin-bottom:10px;flex-wrap:wrap}
 .cr3{display:flex;align-items:flex-end;justify-content:space-between}
 .pm{font-size:19px;font-weight:600}
-.pr{font-size:11px;color:var(--text3);margin-top:2px;font-family:'DM Mono',monospace}
+.pr{font-size:11px;color:var(--text3);margin-top:2px;font-family:"DM Mono",monospace}
 .pg{color:var(--green)}
 .pr2{color:var(--red)}
-.btn-see{font-size:12px;padding:6px 13px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.btn-see{font-size:12px;padding:6px 13px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--text2);cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
 .btn-see:hover{color:var(--text);background:rgba(255,255,255,.04)}
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:60px 0}
 .spin{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.steps{font-size:12px;color:var(--text3);font-family:'DM Mono',monospace}
+.steps{font-size:12px;color:var(--text3);font-family:"DM Mono",monospace}
 .step{padding:3px 0}
 .step.done{color:var(--green)}
-.step.done::before{content:'v '}
 .step.go{color:var(--text2)}
-.step.go::before{content:'> '}
 .notice{background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.18);border-radius:var(--r);padding:10px 14px;font-size:12px;color:#6ab0d4;margin-bottom:12px;line-height:1.6}
 .ext{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-.ext-title{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:8px}
+.ext-title{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace;margin-bottom:8px}
 .ext-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.ext-btn{padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text2);font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.ext-btn{padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text2);font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-family:"DM Sans",sans-serif}
 .ext-btn:hover{border-color:var(--border2);color:var(--text)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .bdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite;margin-right:6px;vertical-align:middle}
@@ -111,7 +100,6 @@ option{color:var(--text);background:var(--bg3)}
   </div>
   <div class="status" id="status">aguardando busca</div>
 </div>
-
 <div class="wrap">
   <div class="sidebar">
     <div class="sec">Modelo</div>
@@ -155,7 +143,6 @@ option{color:var(--text);background:var(--bg3)}
         </optgroup>
       </select>
     </div>
-
     <div class="sec" style="margin-top:4px">Filtros manuais</div>
     <div class="field">
       <label>Marca</label>
@@ -165,7 +152,8 @@ option{color:var(--text);background:var(--bg3)}
         <option>Kawasaki</option><option>BMW</option><option>Triumph</option>
         <option>Harley-Davidson</option><option>Royal Enfield</option>
         <option>Ducati</option><option>KTM</option><option>Dafra</option>
-        <option>Haojue</option><option>Can-Am</option><option value="outras">Outras</option>
+        <option>Haojue</option><option>Can-Am</option>
+        <option value="outras">Outras</option>
       </select>
     </div>
     <div class="field">
@@ -188,7 +176,6 @@ option{color:var(--text);background:var(--bg3)}
         <input id="pmax" type="number" placeholder="sem limite">
       </div>
     </div>
-
     <div class="sec">Alerta FIPE</div>
     <div class="thr">
       <div class="thr-lbl">Alertar quando abaixo de:</div>
@@ -197,22 +184,19 @@ option{color:var(--text);background:var(--bg3)}
         <div class="thr-val" id="tv">15%</div>
       </div>
     </div>
-
     <div class="sec">Fontes</div>
-    <div class="chips" id="chips">
+    <div class="chips">
       <div class="chip on" data-s="ml"><span class="dot" style="background:#ddb800"></span>Mercado Livre</div>
       <div class="chip on" data-s="olx"><span class="dot" style="background:#f07040"></span>OLX</div>
       <div class="chip on" data-s="wb"><span class="dot" style="background:#cc4040"></span>Webmotors</div>
       <div class="chip on" data-s="ic"><span class="dot" style="background:#4090cc"></span>iCarros</div>
       <div class="chip on" data-s="fb"><span class="dot" style="background:#4080d4"></span>Facebook</div>
     </div>
-
     <button class="btn-run" id="btn" onclick="buscar()">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       Buscar agora
     </button>
   </div>
-
   <div class="main" id="main">
     <div class="empty">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -221,10 +205,8 @@ option{color:var(--text);background:var(--bg3)}
     </div>
   </div>
 </div>
-
 <script>
 var ACTIVE = {ml:true,olx:true,wb:true,ic:true,fb:true};
-
 document.querySelectorAll('.chip').forEach(function(c){
   c.onclick = function(){
     var s = c.dataset.s;
@@ -232,7 +214,6 @@ document.querySelectorAll('.chip').forEach(function(c){
     c.classList.toggle('on', ACTIVE[s]);
   };
 });
-
 function applyPreset(val){
   if(!val) return;
   var parts = val.split('|');
@@ -242,34 +223,23 @@ function applyPreset(val){
   var el = document.getElementById('marca');
   el.selectedIndex = 0;
   for(var i=0;i<el.options.length;i++){
-    if(el.options[i].value===marca||el.options[i].text===marca){ el.selectedIndex=i; break; }
+    if(el.options[i].value===marca||el.options[i].text===marca){el.selectedIndex=i;break;}
   }
   document.getElementById('modelo').value = modelo;
   var ae = document.getElementById('ano');
   ae.selectedIndex = 0;
   for(var j=0;j<ae.options.length;j++){
-    if(ae.options[j].value===ano||ae.options[j].text===ano){ ae.selectedIndex=j; break; }
+    if(ae.options[j].value===ano||ae.options[j].text===ano){ae.selectedIndex=j;break;}
   }
-  setTimeout(function(){ buscar(); }, 100);
+  setTimeout(function(){ buscar(); }, 50);
 }
-
 function fmt(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
-
+function abrirUrl(url){ window.open(url,'_blank'); }
 function fipeFallback(marca,modelo){
-  var m = (marca||'').toLowerCase();
-  var d = (modelo||'').toLowerCase().replace(/[^a-z0-9]/g,'');
-  var map = {
-    'biz':9500,'pcx':16000,'nmax':16500,'elite':9000,'neo':9500,
-    'start':9000,'fan':9000,'titan':11000,
-    'fazer250':15000,'twister':16000,'cb300':22000,
-    'mt03':28000,'r3':30000,'xre300':22000,'lander':19500,
-    'g310':32000,'cb500x':33000,'cb500f':27500,
-    'xj6':28000,'cb650':46000,'gsxs750':38000,'gsxs1000':52000,
-    'tracer':55000,'tiger900':75000,'mt07':46000,'mt09':55000
-  };
-  for(var k in map){
-    if(d.indexOf(k)!==-1) return map[k];
-  }
+  var m=(marca||'').toLowerCase();
+  var d=(modelo||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  var map={'biz':9500,'pcx':16000,'nmax':16500,'elite':9000,'neo':9500,'start':9000,'fan':9000,'titan':11000,'fazer250':15000,'twister':16000,'cb300':22000,'mt03':28000,'r3':30000,'xre300':22000,'lander':19500,'g310':32000,'cb500x':33000,'cb500f':27500,'xj6':28000,'cb650':46000,'gsxs750':38000,'gsxs1000':52000,'tracer':55000,'tiger900':75000,'mt07':46000,'mt09':55000};
+  for(var k in map){ if(d.indexOf(k)!==-1) return map[k]; }
   if(m==='honda') return 20000;
   if(m==='yamaha') return 22000;
   if(m==='bmw') return 40000;
@@ -277,13 +247,12 @@ function fipeFallback(marca,modelo){
   if(m==='suzuki') return 25000;
   return 25000;
 }
-
 function getFipe(marca,modelo){
   return new Promise(function(ok){
-    var IDS = {Honda:592,Yamaha:599,Suzuki:597,Kawasaki:591,BMW:586,Triumph:598};
-    var mid = IDS[marca];
-    if(!mid||!modelo){ ok(null); return; }
-    var base = 'https://parallelum.com.br/fipe/api/v1/motos';
+    var IDS={Honda:592,Yamaha:599,Suzuki:597,Kawasaki:591,BMW:586,Triumph:598};
+    var mid=IDS[marca];
+    if(!mid||!modelo){ok(null);return;}
+    var base='https://parallelum.com.br/fipe/api/v1/motos';
     fetch(base+'/marcas/'+mid+'/modelos')
       .then(function(r){return r.json();})
       .then(function(d){
@@ -308,17 +277,10 @@ function getFipe(marca,modelo){
       .catch(function(){ok(null);});
   });
 }
-
 function getML(marca,modelo,ano,pmax){
   return new Promise(function(ok){
     var q=['moto',marca,modelo].filter(Boolean).join(' ');
-    var url='https://api.mercadolibre.com/sites/MLB/search'
-      +'?q='+encodeURIComponent(q)
-      +'&category=MLB1501'
-      +'&state=BR-SP'
-      +'&city=Sorocaba'
-      +'&limit=48'
-      +'&condition=used';
+    var url='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&category=MLB1501&state=BR-SP&city=Sorocaba&limit=48&condition=used';
     fetch(url)
       .then(function(r){return r.json();})
       .then(function(d){
@@ -348,19 +310,17 @@ function getML(marca,modelo,ano,pmax){
       .catch(function(){ok([]);});
   });
 }
-
 function extLinks(marca,modelo,ano,pmax){
   var q=[marca,modelo].filter(Boolean).join(' ').trim()||'moto';
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
   var out={};
   if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/motos-e-pecas/motos?q='+qs+'&sf=1&re=11&lis=3'+(pmax?'&pe='+pmax:'')};
-  if(ACTIVE.wb)  out.wb ={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+qs+(ano?'&AnoModeloInicial='+ano:'')};
-  if(ACTIVE.ic)  out.ic ={lbl:'iCarros',url:'https://www.icarros.com.br/motos/usados/'+q.toLowerCase().replace(/\s+/g,'-')+'/sorocaba-sao-paulo'};
-  if(ACTIVE.fb)  out.fb ={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
+  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+qs+(ano?'&AnoModeloInicial='+ano:'')};
+  if(ACTIVE.ic)  out.ic={lbl:'iCarros',url:'https://www.icarros.com.br/motos/usados/'+q.toLowerCase().replace(/\s+/g,'-')+'/sorocaba-sao-paulo'};
+  if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
   return out;
 }
-
 function setStep(els,i){
   els.forEach(function(e,n){
     e.className='step';
@@ -370,27 +330,19 @@ function setStep(els,i){
     else{e.textContent=txt;}
   });
 }
-
 function buscar(){
-  console.log('buscar called');
-  var marca = document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
-  console.log('marca:', marca, 'modelo:', document.getElementById('modelo').value);
-  var modelo = document.getElementById('modelo').value.trim();
-  var ano = document.getElementById('ano').value;
-  var pmax = parseFloat(document.getElementById('pmax').value)||0;
-  var thr = parseFloat(document.getElementById('thr').value)||15;
-
+  var marca=document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
+  var modelo=document.getElementById('modelo').value.trim();
+  var ano=document.getElementById('ano').value;
+  var pmax=parseFloat(document.getElementById('pmax').value)||0;
+  var thr=parseFloat(document.getElementById('thr').value)||15;
   var btn=document.getElementById('btn');
   btn.disabled=true;
   btn.innerHTML='<span class="bdot"></span> Buscando...';
-
   var txts=['buscando no Mercado Livre...','consultando FIPE...','calculando referencias...','comparando precos...','pronto'];
-  document.getElementById('main').innerHTML=
-    '<div class="loading"><div class="spin"></div>'
-    +'<div class="steps" id="steps">'+txts.map(function(t){return '<div class="step" data-t="'+t+'">'+t+'</div>';}).join('')+'</div></div>';
+  document.getElementById('main').innerHTML='<div class="loading"><div class="spin"></div><div class="steps" id="steps">'+txts.map(function(t){return '<div class="step" data-t="'+t+'">'+t+'</div>';}).join('')+'</div></div>';
   var sels=Array.from(document.querySelectorAll('.step'));
   setStep(sels,0);
-
   getML(marca,modelo,ano,pmax).then(function(items){
     setStep(sels,1);
     return getFipe(marca,modelo).then(function(fv){
@@ -409,17 +361,15 @@ function buscar(){
       });
     });
   }).then(function(d){
-    var lista=d.lista, fv=d.fv, mol=d.mol;
+    var lista=d.lista,fv=d.fv,mol=d.mol;
     var alertas=lista.filter(function(x){return x.alerta;}).length;
     var maxd=lista.length?Math.max.apply(null,lista.map(function(x){return x.df;})):0;
     var lnks=extLinks(marca,modelo,ano,pmax);
-
     btn.disabled=false;
     btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Buscar agora';
     document.getElementById('status').innerHTML='<span class="bdot"></span>'+new Date().toLocaleTimeString('pt-BR')+' - '+lista.length+' resultados';
-
     var h='';
-    h+='<div class="notice">Mercado Livre: <strong>'+lista.length+'</strong> anuncio'+(lista.length!==1?'s':'')+' com dados reais. OLX e demais: use os botoes no final da pagina.</div>';
+    h+='<div class="notice">Mercado Livre: <strong>'+lista.length+'</strong> anuncio'+(lista.length!==1?'s':'')+' com dados reais. OLX e demais: botoes abaixo.</div>';
     h+='<div class="metrics">';
     h+='<div class="mc"><div class="mc-lbl">ML resultados</div><div class="mc-val">'+lista.length+'</div></div>';
     h+='<div class="mc"><div class="mc-lbl">alertas FIPE</div><div class="mc-val" style="color:var(--green)">'+alertas+'</div></div>';
@@ -430,13 +380,11 @@ function buscar(){
     h+='<div class="rc"><div class="rc-lbl">FIPE - tabela publica</div><div class="rc-val">'+fmt(fv)+'</div><div class="rc-sub">referencia oficial</div></div>';
     h+='<div class="rc"><div class="rc-lbl">Molicar estimado</div><div class="rc-val">'+fmt(mol)+'</div><div class="rc-sub">referencia revenda (-9% FIPE)</div></div>';
     h+='</div>';
-
     if(lista.length){
       h+='<div class="rh"><div class="rh-count">'+lista.length+' resultado'+(lista.length!==1?'s':'')+' - ordenado por desconto</div></div>';
     } else {
       h+='<div style="text-align:center;padding:16px 0;color:var(--text3);font-size:13px">Nenhum resultado no ML para esses filtros.</div>';
     }
-
     lista.forEach(function(x){
       var pct=Math.abs(x.df).toFixed(1);
       var ab=x.df>0;
@@ -448,22 +396,24 @@ function buscar(){
       var eco=Math.abs(fv-x.p);
       var reftxt=ab?'vs FIPE '+fmt(fv)+' | economia '+fmt(eco):'vs FIPE '+fmt(fv);
       var rc=ab?'pg':'pr2';
-      var su=x.url.replace(/'/g,"\\'");
+      var idx=window._urls?window._urls.length:0;
+      if(!window._urls) window._urls=[];
+      window._urls.push(x.url);
       h+='<div class="'+cc+'">';
       h+='<div class="cr1"><div class="ct">'+x.t+'</div><div class="bdgs">'+badge+'<span class="b bml">ML</span></div></div>';
       h+='<div class="cr2"><span>'+x.ano+'</span><span>'+x.km+'</span><span>'+x.loc+'</span></div>';
       h+='<div class="cr3"><div><div class="pm">'+fmt(x.p)+'</div><div class="pr '+rc+'">'+reftxt+'</div></div>';
-      h+='<button class="btn-see" onclick="window.open(this.dataset.url,\'_blank\')" data-url="'+su+'">Ver anuncio &rarr;</button></div>';
+      h+='<button class="btn-see" onclick="abrirUrl(window._urls['+idx+'])">Ver anuncio</button></div>';
       h+='</div>';
     });
-
     var lkeys=Object.keys(lnks);
     if(lkeys.length){
       h+='<div class="ext"><div class="ext-title">Buscar nos demais sites (abre filtrado)</div><div class="ext-grid">';
       lkeys.forEach(function(k){
         var ln=lnks[k];
-        var su=ln.url.replace(/'/g,"\\'");
-        h+='<div class="ext-btn" onclick="window.open(this.dataset.url,\'_blank\')" data-url="'+su+'">'+ln.lbl+' &rarr;</div>';
+        var idx=window._urls.length;
+        window._urls.push(ln.url);
+        h+='<div class="ext-btn" onclick="abrirUrl(window._urls['+idx+'])">'+ln.lbl+' &rarr;</div>';
       });
       h+='</div></div>';
     }
@@ -471,7 +421,7 @@ function buscar(){
   }).catch(function(e){
     btn.disabled=false;
     btn.innerHTML='Buscar agora';
-    document.getElementById('main').innerHTML='<div style="padding:32px;color:var(--red);font-size:13px;line-height:2"><strong>Erro:</strong> '+( e&&e.message?e.message:'falha na conexao')+'<br><span style="color:var(--text3)">Verifique sua conexao com a internet e tente novamente.</span></div>';
+    document.getElementById('main').innerHTML='<div style="padding:32px;color:var(--red);font-size:13px;line-height:2"><strong>Erro:</strong> '+(e&&e.message?e.message:'falha na conexao')+'</div>';
   });
 }
 </script>
