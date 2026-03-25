@@ -322,8 +322,9 @@ function extLinks(marca,modelo,ano,pmax){
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
   var out={};
+  out.ml_site={lbl:'Mercado Livre',url:'https://lista.mercadolivre.com.br/motos/'+qs.toLowerCase().replace(/[+]/g,'-')+'#D[A:'+encodeURIComponent(q)+']'};
   if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs};
-  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&tipoveiculo=motos&q='+qs+(ano?'&AnoModeloInicial='+ano:'')+'&page=1'};
+  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/'+qs.toLowerCase().replace(/[+]/g,'-')+'?Estado=SP&Municipio=Sorocaba'+(ano?'&AnoModeloInicial='+ano:'')};
 
   if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
   return out;
