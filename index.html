@@ -18,7 +18,7 @@ body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;fon
 .status{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace}
 .wrap{display:flex;height:calc(100vh - 65px)}
 .sidebar{width:290px;min-width:290px;border-right:1px solid var(--border);padding:18px 16px;overflow-y:auto}
-.main{flex:1;overflow-y:auto;padding:20px 24px;background:var(--bg2)}
+.main{flex:1;overflow-y:auto;padding:28px 32px;background:var(--bg2)}
 .sec{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;font-family:"DM Mono",monospace}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
@@ -34,60 +34,33 @@ option{color:var(--text);background:var(--bg3)}
 .thr-row input[type=range]{flex:1;height:4px;-webkit-appearance:none;background:var(--border2);border-radius:2px;outline:none;border:none;padding:0}
 .thr-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--green);cursor:pointer}
 .thr-val{font-size:17px;font-weight:600;color:var(--green);font-family:"DM Mono",monospace;min-width:40px;text-align:right}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
-.chip{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:20px;border:1px solid var(--border);font-size:11px;cursor:pointer;color:var(--text2);transition:all .15s;user-select:none}
-.chip.on{border-color:var(--gborder);background:var(--gbg);color:var(--green)}
-.dot{width:6px;height:6px;border-radius:50%}
-.btn-run{width:100%;height:44px;background:var(--green);color:#0a1a10;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:"DM Sans",sans-serif;transition:opacity .15s;margin-top:4px}
+.btn-run{width:100%;height:48px;background:var(--green);color:#0a1a10;border:none;border-radius:var(--r);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:"DM Sans",sans-serif;transition:opacity .15s;margin-top:4px}
 .btn-run:hover{opacity:.88}
-.btn-run:disabled{opacity:.4;cursor:not-allowed}
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:var(--text3);text-align:center}
-.empty svg{width:40px;height:40px;opacity:.3}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.mc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
-.mc-lbl{font-size:10px;color:var(--text3);margin-bottom:3px;font-family:"DM Mono",monospace}
-.mc-val{font-size:20px;font-weight:600}
-.refs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.rc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
-.rc-lbl{font-size:10px;color:var(--text3);margin-bottom:2px;font-family:"DM Mono",monospace}
-.rc-val{font-size:17px;font-weight:600}
-.rc-sub{font-size:11px;color:var(--text3);margin-top:1px}
-.rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rh-count{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace}
-.card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;margin-bottom:8px;transition:border-color .15s}
-.card:hover{border-color:var(--border2)}
-.card.alert{border-left:3px solid var(--green);background:linear-gradient(to right,rgba(46,204,113,.06),var(--bg3) 40%)}
-.cr1{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;gap:8px}
-.ct{font-size:13px;font-weight:500;flex:1}
-.bdgs{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0}
-.b{font-size:10px;padding:2px 7px;border-radius:6px;font-family:"DM Mono",monospace;border:1px solid transparent;white-space:nowrap}
-.bml{background:#1f1c00;color:#ddb800;border-color:rgba(221,184,0,.2)}
-.balert{background:var(--gbg);color:var(--green);border-color:var(--gborder)}
-.bwarn{background:var(--abg);color:var(--amber);border-color:rgba(243,156,18,.25)}
-.bover{background:var(--rbg);color:var(--red);border-color:rgba(231,76,60,.25)}
-.cr2{display:flex;gap:12px;font-size:12px;color:var(--text2);margin-bottom:10px;flex-wrap:wrap}
-.cr3{display:flex;align-items:flex-end;justify-content:space-between}
-.pm{font-size:19px;font-weight:600}
-.pr{font-size:11px;color:var(--text3);margin-top:2px;font-family:"DM Mono",monospace}
-.pg{color:var(--green)}
-.pr2{color:var(--red)}
-.btn-see{font-size:12px;padding:6px 13px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--text2);cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
-.btn-see:hover{color:var(--text);background:rgba(255,255,255,.04)}
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:60px 0}
-.spin{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.steps{font-size:12px;color:var(--text3);font-family:"DM Mono",monospace}
-.step{padding:3px 0}
-.step.done{color:var(--green)}
-.step.go{color:var(--text2)}
-.notice{background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.18);border-radius:var(--r);padding:10px 14px;font-size:12px;color:#6ab0d4;margin-bottom:12px;line-height:1.6}
-.ext{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-.ext-title{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace;margin-bottom:8px}
-.ext-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.ext-btn{padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text2);font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-family:"DM Sans",sans-serif}
-.ext-btn:hover{border-color:var(--border2);color:var(--text)}
+.btn-run:active{transform:scale(.98)}
+/* main */
+.empty-msg{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80%;gap:12px;color:var(--text3);text-align:center}
+.empty-msg svg{width:48px;height:48px;opacity:.2}
+.fipe-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rl);padding:24px 28px;margin-bottom:20px}
+.fipe-moto{font-size:22px;font-weight:600;color:var(--text);margin-bottom:4px}
+.fipe-sub{font-size:12px;color:var(--text3);font-family:"DM Mono",monospace;margin-bottom:20px}
+.fipe-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.fipe-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+.fipe-card-lbl{font-size:10px;color:var(--text3);font-family:"DM Mono",monospace;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.fipe-card-val{font-size:26px;font-weight:600;color:var(--text)}
+.fipe-card-hint{font-size:11px;color:var(--text3);margin-top:4px}
+.alerta-block{background:var(--green-bg);border:1px solid var(--gborder);border-radius:var(--r);padding:12px 16px;margin-bottom:20px;display:none}
+.alerta-txt{font-size:13px;color:var(--green);font-weight:500}
+.sites-title{font-size:11px;color:var(--text3);font-family:"DM Mono",monospace;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.sites-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.site-btn{display:flex;flex-direction:column;align-items:flex-start;padding:14px 16px;border:1px solid var(--border);border-radius:var(--rl);background:var(--bg3);cursor:pointer;transition:all .15s;text-align:left}
+.site-btn:hover{border-color:var(--border2);background:var(--bg)}
+.site-btn-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.site-btn-desc{font-size:11px;color:var(--text3)}
+.site-dot{width:8px;height:8px;border-radius:50%;margin-bottom:8px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .bdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite;margin-right:6px;vertical-align:middle}
+.spin-inline{display:inline-block;width:14px;height:14px;border:2px solid rgba(10,26,16,.3);border-top-color:#0a1a10;border-radius:50%;animation:spin .7s linear infinite;margin-right:6px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 </style>
@@ -98,7 +71,7 @@ option{color:var(--text);background:var(--bg3)}
     <div class="logo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0a1a10" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
     <div><div class="logo-name">Buscador de Motos</div><div class="logo-sub">Sorocaba e regiao</div></div>
   </div>
-  <div class="status" id="status">aguardando busca</div>
+  <div class="status" id="status">selecione um modelo</div>
 </div>
 <div class="wrap">
   <div class="sidebar">
@@ -143,6 +116,7 @@ option{color:var(--text);background:var(--bg3)}
         </optgroup>
       </select>
     </div>
+
     <div class="sec" style="margin-top:4px">Filtros manuais</div>
     <div class="field">
       <label>Marca</label>
@@ -176,44 +150,32 @@ option{color:var(--text);background:var(--bg3)}
         <input id="pmax" type="number" placeholder="sem limite">
       </div>
     </div>
+
     <div class="sec">Alerta FIPE</div>
     <div class="thr">
-      <div class="thr-lbl">Alertar quando abaixo de:</div>
+      <div class="thr-lbl">Alertar abaixo de:</div>
       <div class="thr-row">
         <input type="range" id="thr" min="5" max="40" value="15" oninput="document.getElementById('tv').textContent=this.value+'%'">
         <div class="thr-val" id="tv">15%</div>
       </div>
     </div>
-    <div class="sec">Fontes</div>
-    <div class="chips">
-      <div class="chip on" data-s="ml"><span class="dot" style="background:#ddb800"></span>Mercado Livre</div>
-      <div class="chip on" data-s="olx"><span class="dot" style="background:#f07040"></span>OLX</div>
-      <div class="chip on" data-s="wb"><span class="dot" style="background:#cc4040"></span>Webmotors</div>
 
-      <div class="chip on" data-s="fb"><span class="dot" style="background:#4080d4"></span>Facebook</div>
-    </div>
     <button class="btn-run" id="btn" onclick="buscar()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Buscar agora
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Consultar FIPE e buscar
     </button>
   </div>
+
   <div class="main" id="main">
-    <div class="empty">
+    <div class="empty-msg">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <div style="font-size:14px;color:var(--text2)">Selecione um modelo ou configure os filtros</div>
-      <div style="font-size:12px">Clique em Buscar agora para iniciar</div>
+      <div style="font-size:15px;color:var(--text2)">Selecione um modelo e clique em Consultar</div>
+      <div style="font-size:12px">A tabela FIPE e os links de busca apareceram aqui</div>
     </div>
   </div>
 </div>
+
 <script>
-var ACTIVE = {ml:true,olx:true,wb:true,fb:true};
-document.querySelectorAll('.chip').forEach(function(c){
-  c.onclick = function(){
-    var s = c.dataset.s;
-    ACTIVE[s] = !ACTIVE[s];
-    c.classList.toggle('on', ACTIVE[s]);
-  };
-});
 function applyPreset(val){
   if(!val) return;
   var parts = val.split('|');
@@ -233,12 +195,14 @@ function applyPreset(val){
   }
   setTimeout(function(){ buscar(); }, 50);
 }
+
 function fmt(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
 function abrirUrl(url){ window.open(url,'_blank'); }
+
 function fipeFallback(marca,modelo){
   var m=(marca||'').toLowerCase();
   var d=(modelo||'').toLowerCase().replace(/[^a-z0-9]/g,'');
-  var map={'biz':9500,'pcx':16000,'nmax':16500,'elite':9000,'neo':9500,'start':9000,'fan':9000,'titan':11000,'fazer250':15000,'twister':16000,'cb300':22000,'mt03':28000,'r3':30000,'xre300':22000,'lander':19500,'g310':32000,'cb500x':33000,'cb500f':27500,'xj6':28000,'cb650':46000,'gsxs750':38000,'gsxs1000':52000,'tracer':55000,'tiger900':75000,'mt07':46000,'mt09':55000};
+  var map={biz:9500,pcx:16000,nmax:16500,elite:9000,neo:9500,start:9000,fan:9000,titan:11000,fazer250:15000,twister:16000,cb300:22000,mt03:28000,r3:30000,xre300:22000,lander:19500,g310:32000,cb500x:33000,cb500f:27500,xj6:28000,cb650:46000,gsxs750:38000,gsxs1000:52000,tracer:55000,tiger900:75000,mt07:46000,mt09:55000};
   for(var k in map){ if(d.indexOf(k)!==-1) return map[k]; }
   if(m==='honda') return 20000;
   if(m==='yamaha') return 22000;
@@ -247,6 +211,7 @@ function fipeFallback(marca,modelo){
   if(m==='suzuki') return 25000;
   return 25000;
 }
+
 function getFipe(marca,modelo){
   return new Promise(function(ok){
     var IDS={Honda:592,Yamaha:599,Suzuki:597,Kawasaki:591,BMW:586,Triumph:598};
@@ -277,159 +242,106 @@ function getFipe(marca,modelo){
       .catch(function(){ok(null);});
   });
 }
-function getML(marca,modelo,ano,pmax){
-  return new Promise(function(ok){
-    var q=['moto',marca,modelo].filter(Boolean).join(' ');
-    var url='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&category=MLB1501&state=BR-SP&limit=48&condition=used';
-    var urlFallback='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&state=BR-SP&limit=48&condition=used';
-    fetch(url)
-      .then(function(r){return r.json();})
-      .then(function(d){
-        if(!d||!d.results||d.results.length===0){
-          return fetch(urlFallback).then(function(r2){return r2.json();});
-        }
-        return d;
-      })
-      .then(function(d){
-        if(!d||!d.results){ok([]);return;}
-        var list=d.results.filter(function(x){
-          if(pmax&&x.price>pmax) return false;
-          if(ano){
-            var yr=null;
-            (x.attributes||[]).forEach(function(a){if(a.id==='VEHICLE_YEAR')yr=parseInt(a.value_name||0);});
-            if(yr&&yr<parseInt(ano)) return false;
-          }
-          return true;
-        }).map(function(x){
-          var yr='',km='',city='',state='';
-          (x.attributes||[]).forEach(function(a){
-            if(a.id==='VEHICLE_YEAR') yr=a.value_name||'';
-            if(a.id==='KILOMETERS') km=parseInt(a.value_name||0).toLocaleString('pt-BR')+' km';
-          });
-          if(x.seller_address){
-            city=(x.seller_address.city&&x.seller_address.city.name)||'';
-            state=(x.seller_address.state&&x.seller_address.state.name)||'';
-          }
-          return {t:x.title,p:x.price,ano:yr||'-',km:km||'-',loc:[city,state].filter(Boolean).join(', ')||'SP',url:x.permalink};
-        });
-        ok(list);
-      })
-      .catch(function(){ok([]);});
-  });
-}
-function extLinks(marca,modelo,ano,pmax){
+
+function buildLinks(marca,modelo,ano,pmax){
   var q=[marca,modelo].filter(Boolean).join(' ').trim()||'moto';
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
-  var out={};
-  out.ml_site={lbl:'Mercado Livre',url:'https://lista.mercadolivre.com.br/motos/'+qs.toLowerCase().replace(/[+]/g,'-')+'#D[A:'+encodeURIComponent(q)+']'};
-  if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs};
-  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/'+qs.toLowerCase().replace(/[+]/g,'-')+'?Estado=SP&Municipio=Sorocaba'+(ano?'&AnoModeloInicial='+ano:'')};
+  var qslug=q.toLowerCase().replace(/\s+/g,'-');
+  var marcaSlug=(marca||'').toLowerCase().replace(/\s+/g,'-');
+  var modeloSlug=(modelo||'').toLowerCase().replace(/\s+/g,'-');
+  return [
+    {
+      nome:'Mercado Livre',
+      desc:'Busca filtrada por modelo',
+      cor:'#FFD700',
+      url:'https://lista.mercadolivre.com.br/motos/'+qslug+'#D[A:'+qe+']'
+    },
+    {
+      nome:'OLX',
+      desc:'Sorocaba e regiao',
+      cor:'#f07040',
+      url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs
+    },
+    {
+      nome:'Webmotors',
+      desc:'SP - Sorocaba',
+      cor:'#cc4040',
+      url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+encodeURIComponent(q)+(ano?'&AnoModeloInicial='+ano:'')
+    },
+    {
+      nome:'Facebook Marketplace',
+      desc:'Sorocaba, 65km de raio',
+      cor:'#4080d4',
+      url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'
+    }
+  ];
+}
 
-  if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
-  return out;
-}
-function setStep(els,i){
-  els.forEach(function(e,n){
-    e.className='step';
-    var txt=e.dataset.t;
-    if(n<i){e.classList.add('done');e.textContent='v '+txt;}
-    else if(n===i){e.classList.add('go');e.textContent='> '+txt;}
-    else{e.textContent=txt;}
-  });
-}
 function buscar(){
-  window._urls=[];
   var marca=document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
   var modelo=document.getElementById('modelo').value.trim();
   var ano=document.getElementById('ano').value;
   var pmax=parseFloat(document.getElementById('pmax').value)||0;
   var thr=parseFloat(document.getElementById('thr').value)||15;
+
+  if(!marca && !modelo){
+    document.getElementById('main').innerHTML='<div class="empty-msg"><div style="font-size:14px;color:var(--red)">Preencha a marca ou o modelo para consultar.</div></div>';
+    return;
+  }
+
   var btn=document.getElementById('btn');
   btn.disabled=true;
-  btn.innerHTML='<span class="bdot"></span> Buscando...';
-  var txts=['buscando no Mercado Livre...','consultando FIPE...','calculando referencias...','comparando precos...','pronto'];
-  document.getElementById('main').innerHTML='<div class="loading"><div class="spin"></div><div class="steps" id="steps">'+txts.map(function(t){return '<div class="step" data-t="'+t+'">'+t+'</div>';}).join('')+'</div></div>';
-  var sels=Array.from(document.querySelectorAll('.step'));
-  setStep(sels,0);
-  getML(marca,modelo,ano,pmax).then(function(items){
-    setStep(sels,1);
-    return getFipe(marca,modelo).then(function(fv){
-      if(!fv) fv=fipeFallback(marca,modelo);
-      setStep(sels,2);
-      var mol=Math.round(fv*0.91);
-      return new Promise(function(r){setTimeout(r,200);}).then(function(){
-        setStep(sels,3);
-        var lista=items.map(function(x){
-          var df=(fv-x.p)/fv*100;
-          return Object.assign({},x,{df:df,alerta:df>=thr,fv:fv,mol:mol});
-        }).sort(function(a,b){return b.df-a.df;});
-        return new Promise(function(r){setTimeout(r,150);}).then(function(){
-          return {lista:lista,fv:fv,mol:mol};
-        });
-      });
-    });
-  }).then(function(d){
-    var lista=d.lista,fv=d.fv,mol=d.mol;
-    var alertas=lista.filter(function(x){return x.alerta;}).length;
-    var maxd=lista.length?Math.max.apply(null,lista.map(function(x){return x.df;})):0;
-    var lnks=extLinks(marca,modelo,ano,pmax);
+  btn.innerHTML='<span class="spin-inline"></span> Consultando FIPE...';
+  document.getElementById('status').innerHTML='consultando...';
+
+  getFipe(marca,modelo).then(function(fv){
+    if(!fv) fv=fipeFallback(marca,modelo);
+    var molicar=Math.round(fv*0.91);
+    var thrVal=thr/100;
+    var limiteAlerta=fv*(1-thrVal);
+    var links=buildLinks(marca,modelo,ano,pmax);
+    var nomeModelo=[marca,modelo].filter(Boolean).join(' ');
+
     btn.disabled=false;
-    btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Buscar agora';
-    document.getElementById('status').innerHTML='<span class="bdot"></span>'+new Date().toLocaleTimeString('pt-BR')+' - '+lista.length+' resultados';
+    btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Consultar FIPE e buscar';
+    document.getElementById('status').innerHTML='<span class="bdot"></span>'+new Date().toLocaleTimeString('pt-BR');
+
     var h='';
-    h+='<div class="notice">Mercado Livre: <strong>'+lista.length+'</strong> anuncio'+(lista.length!==1?'s':'')+' em SP. Alertas em verde = abaixo da FIPE. OLX e demais: botoes abaixo.</div>';
-    h+='<div class="metrics">';
-    h+='<div class="mc"><div class="mc-lbl">ML resultados</div><div class="mc-val">'+lista.length+'</div></div>';
-    h+='<div class="mc"><div class="mc-lbl">alertas FIPE</div><div class="mc-val" style="color:var(--green)">'+alertas+'</div></div>';
-    h+='<div class="mc"><div class="mc-lbl">maior desconto</div><div class="mc-val" style="color:'+(maxd>0?'var(--green)':'var(--text2)')+'">'+( maxd>0?Math.round(maxd)+'%':'-')+'</div></div>';
-    h+='<div class="mc"><div class="mc-lbl">FIPE ref.</div><div class="mc-val" style="font-size:13px">'+fmt(fv)+'</div></div>';
+    h+='<div class="fipe-block">';
+    h+='<div class="fipe-moto">'+nomeModelo+'</div>';
+    h+='<div class="fipe-sub">Tabela FIPE consultada agora'+(ano?' | Ano minimo: '+ano:'')+'</div>';
+    h+='<div class="fipe-row">';
+    h+='<div class="fipe-card"><div class="fipe-card-lbl">FIPE - tabela publica</div><div class="fipe-card-val">'+fmt(fv)+'</div><div class="fipe-card-hint">Referencia oficial de mercado</div></div>';
+    h+='<div class="fipe-card"><div class="fipe-card-lbl">Molicar estimado</div><div class="fipe-card-val">'+fmt(molicar)+'</div><div class="fipe-card-hint">Referencia revenda (-9% da FIPE)</div></div>';
     h+='</div>';
-    h+='<div class="refs">';
-    h+='<div class="rc"><div class="rc-lbl">FIPE - tabela publica</div><div class="rc-val">'+fmt(fv)+'</div><div class="rc-sub">referencia oficial</div></div>';
-    h+='<div class="rc"><div class="rc-lbl">Molicar estimado</div><div class="rc-val">'+fmt(mol)+'</div><div class="rc-sub">referencia revenda (-9% FIPE)</div></div>';
+    h+='<div style="background:var(--gbg);border:1px solid var(--gborder);border-radius:var(--r);padding:12px 16px;margin-bottom:20px">';
+    h+='<div style="font-size:12px;color:var(--green);font-weight:500">Compre abaixo de '+fmt(limiteAlerta)+' para ter '+thr+'% de desconto vs FIPE</div>';
+    h+='<div style="font-size:11px;color:var(--text3);margin-top:3px">Economia de ate '+fmt(fv-limiteAlerta)+' em relacao a tabela</div>';
     h+='</div>';
-    if(lista.length){
-      h+='<div class="rh"><div class="rh-count">'+lista.length+' resultado'+(lista.length!==1?'s':'')+' - ordenado por desconto</div></div>';
-    } else {
-      h+='<div style="text-align:center;padding:16px 0;color:var(--text3);font-size:13px">Nenhum resultado no ML para esses filtros.</div>';
-    }
-    lista.forEach(function(x){
-      var pct=Math.abs(x.df).toFixed(1);
-      var ab=x.df>0;
-      var badge='';
-      var cc='card';
-      if(x.alerta){badge='<span class="b balert">ALERTA -'+pct+'% FIPE</span>';cc='card alert';}
-      else if(ab){badge='<span class="b bwarn">-'+pct+'% FIPE</span>';}
-      else{badge='<span class="b bover">+'+pct+'% acima</span>';}
-      var eco=Math.abs(fv-x.p);
-      var reftxt=ab?'vs FIPE '+fmt(fv)+' | economia '+fmt(eco):'vs FIPE '+fmt(fv);
-      var rc=ab?'pg':'pr2';
-      var idx=window._urls.length;
-      window._urls.push(x.url);
-      h+='<div class="'+cc+'">';
-      h+='<div class="cr1"><div class="ct">'+x.t+'</div><div class="bdgs">'+badge+'<span class="b bml">ML</span></div></div>';
-      h+='<div class="cr2"><span>'+x.ano+'</span><span>'+x.km+'</span><span>'+x.loc+'</span></div>';
-      h+='<div class="cr3"><div><div class="pm">'+fmt(x.p)+'</div><div class="pr '+rc+'">'+reftxt+'</div></div>';
-      h+='<button class="btn-see" onclick="abrirUrl(window._urls['+idx+'])">Ver anuncio</button></div>';
+    h+='<div class="sites-title">Buscar anuncios agora</div>';
+    h+='<div class="sites-grid">';
+
+    var urls=[];
+    links.forEach(function(ln){
+      var idx=urls.length;
+      urls.push(ln.url);
+      h+='<div class="site-btn" onclick="window._siteUrls && window.open(window._siteUrls['+idx+'],'_blank')">';
+      h+='<div class="site-dot" style="background:'+ln.cor+'"></div>';
+      h+='<div class="site-btn-name">'+ln.nome+' &rarr;</div>';
+      h+='<div class="site-btn-desc">'+ln.desc+'</div>';
       h+='</div>';
     });
-    var lkeys=Object.keys(lnks);
-    if(lkeys.length){
-      h+='<div class="ext"><div class="ext-title">Buscar nos demais sites (abre filtrado)</div><div class="ext-grid">';
-      lkeys.forEach(function(k){
-        var ln=lnks[k];
-        var idx=window._urls.length;
-        window._urls.push(ln.url);
-        h+='<div class="ext-btn" onclick="abrirUrl(window._urls['+idx+'])">'+ln.lbl+' &rarr;</div>';
-      });
-      h+='</div></div>';
-    }
+    h+='</div>';
+    h+='</div>';
+
     document.getElementById('main').innerHTML=h;
-  }).catch(function(e){
+    window._siteUrls=urls;
+
+  }).catch(function(){
     btn.disabled=false;
-    btn.innerHTML='Buscar agora';
-    document.getElementById('main').innerHTML='<div style="padding:32px;color:var(--red);font-size:13px;line-height:2"><strong>Erro:</strong> '+(e&&e.message?e.message:'falha na conexao')+'</div>';
+    btn.innerHTML='Consultar FIPE e buscar';
+    document.getElementById('main').innerHTML='<div class="empty-msg"><div style="color:var(--red);font-size:13px">Erro ao consultar FIPE. Verifique a conexao.</div></div>';
   });
 }
 </script>
