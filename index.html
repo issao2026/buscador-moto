@@ -281,8 +281,15 @@ function getML(marca,modelo,ano,pmax){
   return new Promise(function(ok){
     var q=['moto',marca,modelo].filter(Boolean).join(' ');
     var url='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&category=MLB1501&state=BR-SP&limit=48&condition=used';
+    var urlFallback='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&state=BR-SP&limit=48&condition=used';
     fetch(url)
       .then(function(r){return r.json();})
+      .then(function(d){
+        if(!d||!d.results||d.results.length===0){
+          return fetch(urlFallback).then(function(r2){return r2.json();});
+        }
+        return d;
+      })
       .then(function(d){
         if(!d||!d.results){ok([]);return;}
         var list=d.results.filter(function(x){
@@ -316,7 +323,7 @@ function extLinks(marca,modelo,ano,pmax){
   var qe=encodeURIComponent(q);
   var out={};
   if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs};
-  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/sp?Estado=SP&Municipio=Sorocaba&q='+qs+(ano?'&AnoModeloInicial='+ano+'&AnoModeloFinal='+( parseInt(ano)+10):'')+'&tipoveiculo=motos&estadocidade=Sorocaba'};
+  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&tipoveiculo=motos&q='+qs+(ano?'&AnoModeloInicial='+ano:'')+'&page=1'};
 
   if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
   return out;
