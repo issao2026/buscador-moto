@@ -240,14 +240,17 @@ function applyPreset(val){
   var modelo = parts[1]||'';
   var ano = parts[2]||'';
   var el = document.getElementById('marca');
+  el.selectedIndex = 0;
   for(var i=0;i<el.options.length;i++){
-    if(el.options[i].value===marca){ el.selectedIndex=i; break; }
+    if(el.options[i].value===marca||el.options[i].text===marca){ el.selectedIndex=i; break; }
   }
   document.getElementById('modelo').value = modelo;
   var ae = document.getElementById('ano');
+  ae.selectedIndex = 0;
   for(var j=0;j<ae.options.length;j++){
-    if(ae.options[j].value===ano){ ae.selectedIndex=j; break; }
+    if(ae.options[j].value===ano||ae.options[j].text===ano){ ae.selectedIndex=j; break; }
   }
+  setTimeout(function(){ buscar(); }, 100);
 }
 
 function fmt(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
@@ -369,7 +372,9 @@ function setStep(els,i){
 }
 
 function buscar(){
+  console.log('buscar called');
   var marca = document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
+  console.log('marca:', marca, 'modelo:', document.getElementById('modelo').value);
   var modelo = document.getElementById('modelo').value.trim();
   var ano = document.getElementById('ano').value;
   var pmax = parseFloat(document.getElementById('pmax').value)||0;
