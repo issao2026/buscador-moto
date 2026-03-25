@@ -331,6 +331,7 @@ function setStep(els,i){
   });
 }
 function buscar(){
+  window._urls=[];
   var marca=document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
   var modelo=document.getElementById('modelo').value.trim();
   var ano=document.getElementById('ano').value;
@@ -396,8 +397,7 @@ function buscar(){
       var eco=Math.abs(fv-x.p);
       var reftxt=ab?'vs FIPE '+fmt(fv)+' | economia '+fmt(eco):'vs FIPE '+fmt(fv);
       var rc=ab?'pg':'pr2';
-      var idx=window._urls?window._urls.length:0;
-      if(!window._urls) window._urls=[];
+      var idx=window._urls.length;
       window._urls.push(x.url);
       h+='<div class="'+cc+'">';
       h+='<div class="cr1"><div class="ct">'+x.t+'</div><div class="bdgs">'+badge+'<span class="b bml">ML</span></div></div>';
