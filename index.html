@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garimpo de Motos - Sorocaba</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0f0f;--bg2:#161717;--bg3:#1e1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#f0efec;--text2:#9a9895;--text3:#5a5856;--green:#2ecc71;--green-bg:rgba(46,204,113,0.1);--green-border:rgba(46,204,113,0.25);--amber:#f39c12;--amber-bg:rgba(243,156,18,0.1);--red:#e74c3c;--red-bg:rgba(231,76,60,0.1);--radius:10px;--radius-lg:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;font-size:14px;line-height:1.5}
+.header{border-bottom:1px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:30px;height:30px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:16px;height:16px}
+.logo-title{font-size:15px;font-weight:600;letter-spacing:-.3px}
+.logo-sub{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.header-meta{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.main{display:flex;height:calc(100vh - 69px)}
+.sidebar{width:300px;min-width:300px;border-right:1px solid var(--border);padding:20px 18px;overflow-y:auto;background:var(--bg)}
+.content{flex:1;overflow-y:auto;padding:22px 26px;background:var(--bg2)}
+.slabel{font-size:10px;font-weight:500;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;font-family:'DM Mono',monospace}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
+.field input,.field select{width:100%;height:36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:13px;padding:0 10px;font-family:'DM Sans',sans-serif;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+.field input:focus,.field select:focus{outline:none;border-color:var(--border2)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.thr-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:16px}
+.thr-label{font-size:12px;color:var(--text2);margin-bottom:8px}
+.thr-row{display:flex;align-items:center;gap:10px}
+.thr-row input[type=range]{flex:1;height:4px;-webkit-appearance:none;background:var(--border2);border-radius:2px;outline:none;border:none;padding:0}
+.thr-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--green);cursor:pointer}
+.thr-val{font-size:17px;font-weight:600;color:var(--green);font-family:'DM Mono',monospace;min-width:40px;text-align:right}
+.sources{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.chip{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:20px;border:1px solid var(--border);font-size:11px;cursor:pointer;color:var(--text2);transition:all .15s;user-select:none}
+.chip.on{border-color:var(--green-border);background:var(--green-bg);color:var(--green)}
+.chip-dot{width:6px;height:6px;border-radius:50%}
+.btn-run{width:100%;height:44px;background:var(--green);color:#0a1a10;border:none;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;font-family:'DM Sans',sans-serif;transition:opacity .15s,transform .1s}
+.btn-run:hover{opacity:.88}
+.btn-run:active{transform:scale(.98)}
+.btn-run:disabled{opacity:.4;cursor:not-allowed}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:var(--text3);text-align:center}
+.empty-icon{width:52px;height:52px;border:1px dashed var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.5}
+.metrics-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.metric{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.metric-label{font-size:10px;color:var(--text3);margin-bottom:3px;font-family:'DM Mono',monospace}
+.metric-value{font-size:19px;font-weight:600}
+.fipe-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.fipe-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.fipe-card-label{font-size:10px;color:var(--text3);margin-bottom:2px;font-family:'DM Mono',monospace}
+.fipe-card-val{font-size:17px;font-weight:600}
+.fipe-card-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.results-count{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:8px;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card.alerta{border-left:3px solid var(--green);background:linear-gradient(to right,rgba(46,204,113,.05),var(--bg3) 35%)}
+.card-r1{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;gap:8px}
+.card-title{font-size:13px;font-weight:500;flex:1}
+.badges{display:flex;gap:4px;align-items:center;flex-wrap:wrap;flex-shrink:0}
+.badge{font-size:10px;padding:2px 7px;border-radius:7px;font-family:'DM Mono',monospace;border:1px solid transparent;white-space:nowrap}
+.b-ml{background:#1f1c00;color:#ddb800;border-color:rgba(221,184,0,.2)}
+.b-alerta{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
+.b-warn{background:var(--amber-bg);color:var(--amber);border-color:rgba(243,156,18,.25)}
+.b-over{background:var(--red-bg);color:var(--red);border-color:rgba(231,76,60,.25)}
+.card-r2{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text2);margin-bottom:10px;flex-wrap:wrap}
+.card-r3{display:flex;align-items:flex-end;justify-content:space-between}
+.price-main{font-size:19px;font-weight:600}
+.price-ref{font-size:11px;color:var(--text3);margin-top:2px;font-family:'DM Mono',monospace}
+.price-green{color:var(--green)}
+.price-red{color:var(--red)}
+.btn-open{font-size:12px;padding:6px 13px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap}
+.btn-open:hover{background:rgba(255,255,255,.04);color:var(--text)}
+.loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:50px 0}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-steps{font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;min-width:260px}
+.lstep{padding:3px 0;transition:color .3s}
+.lstep.done{color:var(--green)}
+.lstep.active{color:var(--text2)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.blink-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite;margin-right:5px}
+.notice{background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.2);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:#6ab0d4;margin-bottom:12px;line-height:1.6}
+.src-links{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.src-links-title{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:8px}
+.src-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.src-btn{padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text2);font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.src-btn:hover{border-color:var(--border2);color:var(--text)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a10" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-title">Garimpo de Motos</div>
+      <div class="logo-sub">Sorocaba e regiao</div>
+    </div>
+  </div>
+  <div class="header-meta" id="last-run">aguardando busca</div>
+</div>
+
+<div class="main">
+  <div class="sidebar">
+    <div class="slabel">Filtros de busca</div>
+    <div class="field">
+      <label>Marca</label>
+      <select id="marca">
+        <option value="">Todas as marcas</option>
+        <option value="Honda">Honda</option>
+        <option value="Yamaha">Yamaha</option>
+        <option value="Suzuki">Suzuki</option>
+        <option value="Kawasaki">Kawasaki</option>
+        <option value="BMW">BMW</option>
+        <option value="Triumph">Triumph</option>
+        <option value="Harley-Davidson">Harley-Davidson</option>
+        <option value="Royal Enfield">Royal Enfield</option>
+        <option value="Dafra">Dafra</option>
+        <option value="Haojue">Haojue</option>
+        <option value="Shineray">Shineray</option>
+        <option value="Kasinski">Kasinski</option>
+        <option value="Traxx">Traxx</option>
+        <option value="Can-Am">Can-Am</option>
+        <option value="Ducati">Ducati</option>
+        <option value="KTM">KTM</option>
+        <option value="Husqvarna">Husqvarna</option>
+        <option value="outras">Outras marcas</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Modelo</label>
+      <input id="modelo" type="text" placeholder="ex: CB 500, MT-07, Lander">
+    </div>
+    <div class="field-row">
+      <div class="field" style="margin:0">
+        <label>Ano minimo</label>
+        <select id="ano-min">
+          <option value="">Qualquer</option>
+          <option>2015</option><option>2016</option><option>2017</option>
+          <option>2018</option><option>2019</option><option>2020</option>
+          <option>2021</option><option>2022</option><option>2023</option><option>2024</option>
+        </select>
+      </div>
+      <div class="field" style="margin:0">
+        <label>Preco max</label>
+        <input id="preco-max" type="number" placeholder="R$ sem limite">
+      </div>
+    </div>
+
+    <div class="slabel" style="margin-top:4px">Alerta FIPE</div>
+    <div class="thr-block">
+      <div class="thr-label">Alertar abaixo de:</div>
+      <div class="thr-row">
+        <input type="range" id="slider" min="5" max="40" value="15" oninput="document.getElementById('tval').textContent=this.value+'%'">
+        <div class="thr-val" id="tval">15%</div>
+      </div>
+    </div>
+
+    <div class="slabel">Fontes</div>
+    <div class="sources" id="sources">
+      <div class="chip on" data-s="ml"><span class="chip-dot" style="background:#ddb800"></span>Mercado Livre</div>
+      <div class="chip on" data-s="olx"><span class="chip-dot" style="background:#f07040"></span>OLX</div>
+      <div class="chip on" data-s="wb"><span class="chip-dot" style="background:#cc4040"></span>Webmotors</div>
+      <div class="chip on" data-s="ic"><span class="chip-dot" style="background:#4090cc"></span>iCarros</div>
+      <div class="chip on" data-s="fb"><span class="chip-dot" style="background:#4080d4"></span>Facebook</div>
+    </div>
+
+    <button class="btn-run" id="btn-run" onclick="rodar()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Buscar agora
+    </button>
+  </div>
+
+  <div class="content" id="content">
+    <div class="empty-state">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <div style="font-size:14px;color:var(--text2)">Configure os filtros e clique em Buscar agora</div>
+      <div style="font-size:12px;color:var(--text3)">Mercado Livre com dados reais via API oficial</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var ACTIVE = new Set(['ml','olx','wb','ic','fb']);
+
+  document.querySelectorAll('.chip').forEach(function(c) {
+    c.addEventListener('click', function() {
+      var s = c.getAttribute('data-s');
+      if (ACTIVE.has(s)) { ACTIVE.delete(s); c.classList.remove('on'); }
+      else { ACTIVE.add(s); c.classList.add('on'); }
+    });
+  });
+
+  function fmt(n) {
+    return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+  }
+
+  var FIPE_BASE_URL = 'https://parallelum.com.br/fipe/api/v1/motos';
+  var MARCAS_ID = {Honda:592,Yamaha:599,Suzuki:597,Kawasaki:591,BMW:586,Triumph:598};
+  var FIPE_FALLBACK = {
+    honda:{cb500:27500,cbr:32000,cg:10500,bros:14000,xre:22000,def:18000},
+    yamaha:{mt07:46000,lander:19500,xtz:12000,fazer:16000,def:18000},
+    suzuki:{gsx:38000,def:22000},
+    kawasaki:{z400:34000,ninja:30000,def:28000},
+    bmw:{def:45000},
+    triumph:{def:50000},
+    def:25000
+  };
+
+  function fipeFallback(marca, modelo) {
+    var mk = (marca || '').toLowerCase();
+    var md = (modelo || '').toLowerCase().replace(/[\s\-]/g, '');
+    var base = FIPE_FALLBACK[mk] || FIPE_FALLBACK.def;
+    if (typeof base === 'number') return base;
+    for (var k in base) {
+      if (k !== 'def' && md.indexOf(k.replace(/[\s\-]/g,'')) !== -1) return base[k];
+    }
+    return base.def || 25000;
+  }
+
+  function fetchFipe(marca, modelo) {
+    return new Promise(function(resolve) {
+      var mid = MARCAS_ID[marca];
+      if (!mid || !modelo) { resolve(null); return; }
+      fetch(FIPE_BASE_URL + '/marcas/' + mid + '/modelos')
+        .then(function(r) { return r.json(); })
+        .then(function(d1) {
+          if (!d1 || !d1.modelos) { resolve(null); return; }
+          var q = modelo.toLowerCase();
+          var match = null;
+          d1.modelos.forEach(function(m) {
+            if (!match && m.nome.toLowerCase().indexOf(q) !== -1) match = m;
+          });
+          if (!match) { resolve(null); return; }
+          return fetch(FIPE_BASE_URL + '/marcas/' + mid + '/modelos/' + match.codigo + '/anos');
+        })
+        .then(function(r) { if (r) return r.json(); })
+        .then(function(anos) {
+          if (!anos || !anos.length) { resolve(null); return; }
+          return fetch(FIPE_BASE_URL + '/marcas/' + mid + '/modelos/' + anos[0].codigo.split('-')[0] + '/anos/' + anos[0].codigo);
+        })
+        .then(function(r) { if (r) return r.json(); })
+        .then(function(fipe) {
+          if (!fipe || !fipe.Valor) { resolve(null); return; }
+          var val = parseFloat(fipe.Valor.replace(/[R$\s.]/g,'').replace(',','.'));
+          resolve(isNaN(val) ? null : val);
+        })
+        .catch(function() { resolve(null); });
+    });
+  }
+
+  function fetchML(marca, modelo, anoMin, precoMax) {
+    return new Promise(function(resolve) {
+      var parts = ['moto'];
+      if (marca) parts.push(marca);
+      if (modelo) parts.push(modelo);
+      var q = parts.join(' ');
+      var url = 'https://api.mercadolibre.com/sites/MLB/search?q=' + encodeURIComponent(q) + '&category=MLB1501&state=BR-SP&city=Sorocaba&limit=40&condition=used';
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (!d || !d.results) { resolve([]); return; }
+          var results = d.results.filter(function(item) {
+            if (precoMax && item.price > precoMax) return false;
+            if (anoMin) {
+              var ya = null;
+              (item.attributes || []).forEach(function(a) {
+                if (a.id === 'VEHICLE_YEAR') ya = parseInt(a.value_name || '0');
+              });
+              if (ya && ya < parseInt(anoMin)) return false;
+            }
+            return true;
+          }).map(function(item) {
+            var year = '', km = '', city = '', state = '';
+            (item.attributes || []).forEach(function(a) {
+              if (a.id === 'VEHICLE_YEAR') year = a.value_name || '';
+              if (a.id === 'KILOMETERS') km = parseInt(a.value_name || '0').toLocaleString('pt-BR') + ' km';
+            });
+            if (item.seller_address) {
+              city = (item.seller_address.city && item.seller_address.city.name) || '';
+              state = (item.seller_address.state && item.seller_address.state.name) || '';
+            }
+            return {
+              titulo: item.title,
+              preco: item.price,
+              ano: year || '-',
+              km: km || '-',
+              local: [city, state].filter(Boolean).join(', ') || 'SP',
+              url: item.permalink,
+              thumb: item.thumbnail || ''
+            };
+          });
+          resolve(results);
+        })
+        .catch(function() { resolve([]); });
+    });
+  }
+
+  function buildLinks(marca, modelo, anoMin, precoMax) {
+    var q = [marca, modelo].filter(Boolean).join(' ').trim() || 'moto';
+    var qs = q.replace(/\s+/g, '+');
+    var qe = encodeURIComponent(q);
+    var links = {};
+    if (ACTIVE.has('olx')) links.olx = {label:'OLX', url:'https://www.olx.com.br/motos-e-pecas/motos?q='+qs+'&sf=1&re=11&lis=3'+(precoMax?'&pe='+precoMax:'')};
+    if (ACTIVE.has('wb'))  links.wb  = {label:'Webmotors', url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+qs+(anoMin?'&AnoModeloInicial='+anoMin:'')+(precoMax?'&PrecoAte='+precoMax:'')};
+    if (ACTIVE.has('ic'))  links.ic  = {label:'iCarros', url:'https://www.icarros.com.br/motos/usados/'+q.toLowerCase().replace(/\s+/g,'-')+'/sorocaba-sao-paulo'};
+    if (ACTIVE.has('fb'))  links.fb  = {label:'Facebook', url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
+    return links;
+  }
+
+  function setSteps(els, idx) {
+    els.forEach(function(el, i) {
+      el.className = 'lstep';
+      if (i < idx) { el.classList.add('done'); el.textContent = '✓ ' + el.getAttribute('data-txt'); }
+      else if (i === idx) { el.classList.add('active'); el.textContent = '› ' + el.getAttribute('data-txt'); }
+      else { el.textContent = el.getAttribute('data-txt'); }
+    });
+  }
+
+  window.rodar = function() {
+    try {
+    var marca = document.getElementById('marca').value;
+    var modelo = document.getElementById('modelo').value.trim();
+    var anoMin = document.getElementById('ano-min').value;
+    var precoMax = parseFloat(document.getElementById('preco-max').value) || 0;
+    var threshold = parseFloat(document.getElementById('slider').value) || 15;
+
+    var btn = document.getElementById('btn-run');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="blink-dot"></span> Buscando...';
+
+    var stepTxts = ['buscando no Mercado Livre...','consultando tabela FIPE...','calculando Molicar...','comparando precos...','finalizando...'];
+    var stepsHTML = stepTxts.map(function(s) {
+      return '<div class="lstep" data-txt="' + s + '">' + s + '</div>';
+    }).join('');
+    document.getElementById('content').innerHTML = '<div class="loading-wrap"><div class="spinner"></div><div class="load-steps" id="steps">' + stepsHTML + '</div></div>';
+    var sEls = Array.from(document.querySelectorAll('.lstep'));
+
+    setSteps(sEls, 0);
+
+    } catch(syncErr) {
+      document.getElementById('content').innerHTML = '<div style="padding:32px;color:var(--red);font-size:13px">Erro: ' + syncErr.message + '</div>';
+      document.getElementById('btn-run').disabled = false;
+      document.getElementById('btn-run').innerHTML = 'Buscar agora';
+      return;
+    }
+    Promise.all([
+      fetchML(marca, modelo, anoMin, precoMax || 0),
+      new Promise(function(r) { setTimeout(r, 400); })
+    ]).then(function(res) {
+      var mlResults = res[0];
+      setSteps(sEls, 1);
+      return fetchFipe(marca, modelo).then(function(fipeVal) {
+        if (!fipeVal) fipeVal = fipeFallback(marca, modelo);
+        setSteps(sEls, 2);
+        var molicar = Math.round(fipeVal * 0.91);
+        return new Promise(function(r) { setTimeout(r, 300); }).then(function() {
+          setSteps(sEls, 3);
+          var lista = mlResults.map(function(l) {
+            var dFipe = (fipeVal - l.preco) / fipeVal * 100;
+            return Object.assign({}, l, {dFipe: dFipe, alerta: dFipe >= threshold, fipeVal: fipeVal, molicar: molicar});
+          }).sort(function(a,b) { return b.dFipe - a.dFipe; });
+          return new Promise(function(r) { setTimeout(r, 200); }).then(function() {
+            setSteps(sEls, 4);
+            return {lista: lista, fipeVal: fipeVal, molicar: molicar};
+          });
+        });
+      });
+    }).then(function(data) {
+      var lista = data.lista;
+      var fipeVal = data.fipeVal;
+      var molicar = data.molicar;
+      var alertas = lista.filter(function(l) { return l.alerta; }).length;
+      var maxDesc = lista.length ? Math.max.apply(null, lista.map(function(l) { return l.dFipe; })) : 0;
+      var links = buildLinks(marca, modelo, anoMin, precoMax);
+
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Buscar agora';
+      document.getElementById('last-run').innerHTML = '<span class="blink-dot"></span> ' + new Date().toLocaleTimeString('pt-BR') + ' &mdash; ' + lista.length + ' resultados ML';
+
+      var html = '';
+
+      html += '<div class="notice">Mercado Livre: <strong>' + lista.length + '</strong> anuncio' + (lista.length !== 1 ? 's' : '') + ' com dados reais via API oficial. OLX, Webmotors, iCarros e Facebook: acesso via botoes abaixo (filtrado para Sorocaba).</div>';
+
+      html += '<div class="metrics-bar">';
+      html += '<div class="metric"><div class="metric-label">ML resultados</div><div class="metric-value">' + lista.length + '</div></div>';
+      html += '<div class="metric"><div class="metric-label">alertas FIPE</div><div class="metric-value" style="color:var(--green)">' + alertas + '</div></div>';
+      html += '<div class="metric"><div class="metric-label">maior desconto</div><div class="metric-value" style="color:' + (maxDesc > 0 ? 'var(--green)' : 'var(--text2)') + '">' + (maxDesc > 0 ? Math.round(maxDesc) + '%' : '-') + '</div></div>';
+      html += '<div class="metric"><div class="metric-label">FIPE ref.</div><div class="metric-value" style="font-size:14px">' + fmt(fipeVal) + '</div></div>';
+      html += '</div>';
+
+      html += '<div class="fipe-bar">';
+      html += '<div class="fipe-card"><div class="fipe-card-label">FIPE - tabela publica</div><div class="fipe-card-val">' + fmt(fipeVal) + '</div><div class="fipe-card-sub">Base oficial de comparacao</div></div>';
+      html += '<div class="fipe-card"><div class="fipe-card-label">Molicar estimado</div><div class="fipe-card-val">' + fmt(molicar) + '</div><div class="fipe-card-sub">Referencia revenda (-9% FIPE)</div></div>';
+      html += '</div>';
+
+      if (lista.length) {
+        html += '<div class="results-header"><div class="results-count">Mercado Livre - ' + lista.length + ' resultado' + (lista.length !== 1 ? 's' : '') + ' | ordenado por desconto vs FIPE</div></div>';
+      } else {
+        html += '<div style="text-align:center;padding:20px 0;color:var(--text3);font-size:13px">Nenhum resultado no ML para esses filtros. Use os links abaixo.</div>';
+      }
+
+      lista.forEach(function(l) {
+        var pct = Math.abs(l.dFipe).toFixed(1);
+        var abaixo = l.dFipe > 0;
+        var alertaBadge = '';
+        var cardClass = 'card';
+        if (l.alerta) {
+          alertaBadge = '<span class="badge b-alerta">ALERTA -' + pct + '% FIPE</span>';
+          cardClass = 'card alerta';
+        } else if (abaixo) {
+          alertaBadge = '<span class="badge b-warn">-' + pct + '% FIPE</span>';
+        } else {
+          alertaBadge = '<span class="badge b-over">+' + pct + '% acima</span>';
+        }
+        var economia = Math.abs(fipeVal - l.preco);
+        var refText = abaixo ? 'vs FIPE ' + fmt(fipeVal) + ' | economia ' + fmt(economia) : 'vs FIPE ' + fmt(fipeVal);
+        var refClass = abaixo ? 'price-green' : 'price-red';
+        var safeUrl = l.url.replace(/'/g, "\'");
+        html += '<div class="' + cardClass + '">';
+        html += '<div class="card-r1"><div class="card-title">' + l.titulo + '</div>';
+        html += '<div class="badges">' + alertaBadge + ' <span class="badge b-ml">ML</span></div></div>';
+        html += '<div class="card-r2"><span>' + l.ano + '</span><span>' + l.km + '</span><span>' + l.local + '</span></div>';
+        html += '<div class="card-r3"><div><div class="price-main">' + fmt(l.preco) + '</div><div class="price-ref ' + refClass + '">' + refText + '</div></div>';
+        html += '<button class="btn-open" onclick="window.open('' + safeUrl + '','_blank')">Ver anuncio &rarr;</button></div>';
+        html += '</div>';
+      });
+
+      var linkKeys = Object.keys(links);
+      if (linkKeys.length) {
+        html += '<div class="src-links"><div class="src-links-title">Buscar nos demais sites (abre filtrado para Sorocaba)</div><div class="src-grid">';
+        linkKeys.forEach(function(k) {
+          var lnk = links[k];
+          var safeUrl = lnk.url.replace(/'/g, "\'");
+          html += '<div class="src-btn" onclick="window.open('' + safeUrl + '','_blank')">' + lnk.label + ' &rarr;</div>';
+        });
+        html += '</div></div>';
+      }
+
+      document.getElementById('content').innerHTML = html;
+    }).catch(function(e) {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Buscar agora';
+      document.getElementById('content').innerHTML = '<div style="padding:32px;color:var(--red);font-size:13px;font-family:DM Mono,monospace;line-height:2">'
+        + '<div style="font-size:15px;font-weight:600;margin-bottom:12px">Erro de conexao</div>'
+        + '<div>Este arquivo precisa ser aberto diretamente no navegador (Chrome, Edge ou Firefox).</div>'
+        + '<div style="margin-top:8px;color:var(--text3)">Nao funciona dentro do preview do Claude por restricoes de CORS.</div>'
+        + '<div style="margin-top:16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;color:var(--text2)">'
+        + 'Como usar:<br>1. Baixe o arquivo .html<br>2. Clique duas vezes para abrir no navegador<br>3. Configure os filtros e clique Buscar agora'
+        + '</div>'
+        + '<div style="margin-top:12px;font-size:11px;color:var(--text3)">Detalhe tecnico: ' + (e && e.message ? e.message : 'CORS blocked') + '</div>'
+        + '</div>';
+    });
+  };
+})();
+</script>
+</body>
+</html>
