@@ -448,7 +448,7 @@ function buscar(){
       h+='<div class="cr1"><div class="ct">'+x.t+'</div><div class="bdgs">'+badge+'<span class="b bml">ML</span></div></div>';
       h+='<div class="cr2"><span>'+x.ano+'</span><span>'+x.km+'</span><span>'+x.loc+'</span></div>';
       h+='<div class="cr3"><div><div class="pm">'+fmt(x.p)+'</div><div class="pr '+rc+'">'+reftxt+'</div></div>';
-      h+='<button class="btn-see" onclick="window.open(''+su+'','_blank')">Ver anuncio &rarr;</button></div>';
+      h+='<button class="btn-see" onclick="window.open(this.dataset.url,\'_blank\')" data-url="'+su+'">Ver anuncio &rarr;</button></div>';
       h+='</div>';
     });
 
@@ -458,7 +458,7 @@ function buscar(){
       lkeys.forEach(function(k){
         var ln=lnks[k];
         var su=ln.url.replace(/'/g,"\\'");
-        h+='<div class="ext-btn" onclick="window.open(''+su+'','_blank')">'+ln.lbl+' &rarr;</div>';
+        h+='<div class="ext-btn" onclick="window.open(this.dataset.url,\'_blank\')" data-url="'+su+'">'+ln.lbl+' &rarr;</div>';
       });
       h+='</div></div>';
     }
