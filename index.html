@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buscador de Motos - Sorocaba</title>
+<title>Buscador de Motos - Sorocaba e Regiao</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0e0f0f;--bg2:#161717;--bg3:#1e1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.18);--text:#f0efec;--text2:#9a9895;--text3:#5a5856;--green:#2ecc71;--gbg:rgba(46,204,113,0.1);--gborder:rgba(46,204,113,0.3);--amber:#f39c12;--abg:rgba(243,156,18,0.1);--red:#e74c3c;--rbg:rgba(231,76,60,0.1);--r:10px;--rl:14px}
@@ -280,7 +280,7 @@ function getFipe(marca,modelo){
 function getML(marca,modelo,ano,pmax){
   return new Promise(function(ok){
     var q=['moto',marca,modelo].filter(Boolean).join(' ');
-    var url='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&category=MLB1501&state=BR-SP&city=Sorocaba&limit=48&condition=used';
+    var url='https://api.mercadolibre.com/sites/MLB/search?q='+encodeURIComponent(q)+'&category=MLB1501&state=BR-SP&limit=48&condition=used';
     fetch(url)
       .then(function(r){return r.json();})
       .then(function(d){
@@ -370,7 +370,7 @@ function buscar(){
     btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Buscar agora';
     document.getElementById('status').innerHTML='<span class="bdot"></span>'+new Date().toLocaleTimeString('pt-BR')+' - '+lista.length+' resultados';
     var h='';
-    h+='<div class="notice">Mercado Livre: <strong>'+lista.length+'</strong> anuncio'+(lista.length!==1?'s':'')+' com dados reais. OLX e demais: botoes abaixo.</div>';
+    h+='<div class="notice">Mercado Livre: <strong>'+lista.length+'</strong> anuncio'+(lista.length!==1?'s':'')+' em SP. Alertas em verde = abaixo da FIPE. OLX e demais: botoes abaixo.</div>';
     h+='<div class="metrics">';
     h+='<div class="mc"><div class="mc-lbl">ML resultados</div><div class="mc-val">'+lista.length+'</div></div>';
     h+='<div class="mc"><div class="mc-lbl">alertas FIPE</div><div class="mc-val" style="color:var(--green)">'+alertas+'</div></div>';
