@@ -189,7 +189,7 @@ option{color:var(--text);background:var(--bg3)}
       <div class="chip on" data-s="ml"><span class="dot" style="background:#ddb800"></span>Mercado Livre</div>
       <div class="chip on" data-s="olx"><span class="dot" style="background:#f07040"></span>OLX</div>
       <div class="chip on" data-s="wb"><span class="dot" style="background:#cc4040"></span>Webmotors</div>
-      <div class="chip on" data-s="ic"><span class="dot" style="background:#4090cc"></span>iCarros</div>
+
       <div class="chip on" data-s="fb"><span class="dot" style="background:#4080d4"></span>Facebook</div>
     </div>
     <button class="btn-run" id="btn" onclick="buscar()">
@@ -206,7 +206,7 @@ option{color:var(--text);background:var(--bg3)}
   </div>
 </div>
 <script>
-var ACTIVE = {ml:true,olx:true,wb:true,ic:true,fb:true};
+var ACTIVE = {ml:true,olx:true,wb:true,fb:true};
 document.querySelectorAll('.chip').forEach(function(c){
   c.onclick = function(){
     var s = c.dataset.s;
@@ -315,9 +315,9 @@ function extLinks(marca,modelo,ano,pmax){
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
   var out={};
-  if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp?q='+qs+(pmax?'&pe='+pmax:'')};
-  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque/'+qs.replace(/[+]/g,'-').toLowerCase()+'?Estado=SP&Municipio=Sorocaba'+(ano?'&AnoModeloInicial='+ano:'')};
-  if(ACTIVE.ic)  out.ic={lbl:'iCarros',url:'https://www.icarros.com.br/compra/listaanuncios.jsp?pag=1&ord=6&tip=2&cid=9668&pes='+qe+'&kmp=1'};
+  if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs};
+  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/sp?Estado=SP&Municipio=Sorocaba&q='+qs+(ano?'&AnoModeloInicial='+ano+'&AnoModeloFinal='+( parseInt(ano)+10):'')+'&tipoveiculo=motos&estadocidade=Sorocaba'};
+
   if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
   return out;
 }
