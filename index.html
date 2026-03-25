@@ -315,9 +315,9 @@ function extLinks(marca,modelo,ano,pmax){
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
   var out={};
-  if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/motos-e-pecas/motos?q='+qs+'&sf=1&re=11&lis=3'+(pmax?'&pe='+pmax:'')};
-  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+qs+(ano?'&AnoModeloInicial='+ano:'')};
-  if(ACTIVE.ic)  out.ic={lbl:'iCarros',url:'https://www.icarros.com.br/motos/usados/'+q.toLowerCase().replace(/\s+/g,'-')+'/sorocaba-sao-paulo'};
+  if(ACTIVE.olx) out.olx={lbl:'OLX',url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp?q='+qs+(pmax?'&pe='+pmax:'')};
+  if(ACTIVE.wb)  out.wb={lbl:'Webmotors',url:'https://www.webmotors.com.br/motos/estoque/'+qs.replace(/[+]/g,'-').toLowerCase()+'?Estado=SP&Municipio=Sorocaba'+(ano?'&AnoModeloInicial='+ano:'')};
+  if(ACTIVE.ic)  out.ic={lbl:'iCarros',url:'https://www.icarros.com.br/compra/listaanuncios.jsp?pag=1&ord=6&tip=2&cid=9668&pes='+qe+'&kmp=1'};
   if(ACTIVE.fb)  out.fb={lbl:'Facebook',url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'};
   return out;
 }
