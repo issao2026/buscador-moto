@@ -178,26 +178,29 @@ option{color:var(--text);background:var(--bg3)}
 <script>
 function applyPreset(val){
   if(!val) return;
-  var parts = val.split('|');
-  var marca = parts[0]||'';
-  var modelo = parts[1]||'';
-  var ano = parts[2]||'';
-  var el = document.getElementById('marca');
-  el.selectedIndex = 0;
+  var parts=val.split('|');
+  var marca=parts[0]||'';
+  var modelo=parts[1]||'';
+  var ano=parts[2]||'';
+  var el=document.getElementById('marca');
+  el.selectedIndex=0;
   for(var i=0;i<el.options.length;i++){
     if(el.options[i].value===marca||el.options[i].text===marca){el.selectedIndex=i;break;}
   }
-  document.getElementById('modelo').value = modelo;
-  var ae = document.getElementById('ano');
-  ae.selectedIndex = 0;
+  document.getElementById('modelo').value=modelo;
+  var ae=document.getElementById('ano');
+  ae.selectedIndex=0;
   for(var j=0;j<ae.options.length;j++){
     if(ae.options[j].value===ano||ae.options[j].text===ano){ae.selectedIndex=j;break;}
   }
-  setTimeout(function(){ buscar(); }, 50);
+  runBusca(marca,modelo,ano);
 }
 
 function fmt(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
-function abrirUrl(url){ window.open(url,'_blank'); }
+
+function abrirSite(idx){
+  if(window._siteUrls && window._siteUrls[idx]) window.open(window._siteUrls[idx],'_blank');
+}
 
 function fipeFallback(marca,modelo){
   var m=(marca||'').toLowerCase();
@@ -243,38 +246,20 @@ function getFipe(marca,modelo){
   });
 }
 
-function buildLinks(marca,modelo,ano,pmax){
+function buildLinks(marca,modelo,ano){
   var q=[marca,modelo].filter(Boolean).join(' ').trim()||'moto';
   var qs=q.replace(/\s+/g,'+');
   var qe=encodeURIComponent(q);
   var qslug=q.toLowerCase().replace(/\s+/g,'-');
-  var marcaSlug=(marca||'').toLowerCase().replace(/\s+/g,'-');
-  var modeloSlug=(modelo||'').toLowerCase().replace(/\s+/g,'-');
   return [
-    {
-      nome:'Mercado Livre',
-      desc:'Busca filtrada por modelo',
-      cor:'#FFD700',
-      url:'https://lista.mercadolivre.com.br/motos/'+qslug+'#D[A:'+qe+']'
-    },
-    {
-      nome:'OLX',
-      desc:'Sorocaba e regiao',
-      cor:'#f07040',
-      url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs
-    },
-    {
-      nome:'Webmotors',
-      desc:'SP - Sorocaba',
-      cor:'#cc4040',
-      url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+encodeURIComponent(q)+(ano?'&AnoModeloInicial='+ano:'')
-    },
-    {
-      nome:'Facebook Marketplace',
-      desc:'Sorocaba, 65km de raio',
-      cor:'#4080d4',
-      url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'
-    }
+    {nome:'Mercado Livre',desc:'Busca filtrada por modelo',cor:'#FFD700',
+     url:'https://lista.mercadolivre.com.br/motos/'+qslug+'#D[A:'+qe+']'},
+    {nome:'OLX',desc:'Sorocaba e regiao SP',cor:'#f07040',
+     url:'https://www.olx.com.br/autos-e-pecas/motos/estado-sp/sorocaba+e+regiao?q='+qs},
+    {nome:'Webmotors',desc:'Sorocaba, SP',cor:'#cc4040',
+     url:'https://www.webmotors.com.br/motos/estoque?Estado=SP&Municipio=Sorocaba&q='+qe+(ano?'&AnoModeloInicial='+ano:'')},
+    {nome:'Facebook Marketplace',desc:'Sorocaba, 65km de raio',cor:'#4080d4',
+     url:'https://www.facebook.com/marketplace/sorocaba/search/?query='+qe+'&category_id=1473'}
   ];
 }
 
@@ -282,14 +267,15 @@ function buscar(){
   var marca=document.getElementById('marca').value==='outras'?'':document.getElementById('marca').value;
   var modelo=document.getElementById('modelo').value.trim();
   var ano=document.getElementById('ano').value;
-  var pmax=parseFloat(document.getElementById('pmax').value)||0;
-  var thr=parseFloat(document.getElementById('thr').value)||15;
-
   if(!marca && !modelo){
-    document.getElementById('main').innerHTML='<div class="empty-msg"><div style="font-size:14px;color:var(--red)">Preencha a marca ou o modelo para consultar.</div></div>';
+    document.getElementById('main').innerHTML='<div class="empty-msg"><div style="font-size:14px;color:var(--text2)">Preencha a marca ou o modelo para consultar.</div></div>';
     return;
   }
+  runBusca(marca,modelo,ano);
+}
 
+function runBusca(marca,modelo,ano){
+  var thr=parseFloat(document.getElementById('thr').value)||15;
   var btn=document.getElementById('btn');
   btn.disabled=true;
   btn.innerHTML='<span class="spin-inline"></span> Consultando FIPE...';
@@ -298,46 +284,38 @@ function buscar(){
   getFipe(marca,modelo).then(function(fv){
     if(!fv) fv=fipeFallback(marca,modelo);
     var molicar=Math.round(fv*0.91);
-    var thrVal=thr/100;
-    var limiteAlerta=fv*(1-thrVal);
-    var links=buildLinks(marca,modelo,ano,pmax);
+    var limiteAlerta=Math.round(fv*(1-thr/100));
+    var links=buildLinks(marca,modelo,ano);
     var nomeModelo=[marca,modelo].filter(Boolean).join(' ');
 
     btn.disabled=false;
     btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Consultar FIPE e buscar';
     document.getElementById('status').innerHTML='<span class="bdot"></span>'+new Date().toLocaleTimeString('pt-BR');
 
-    var h='';
-    h+='<div class="fipe-block">';
+    window._siteUrls=links.map(function(l){return l.url;});
+
+    var h='<div class="fipe-block">';
     h+='<div class="fipe-moto">'+nomeModelo+'</div>';
-    h+='<div class="fipe-sub">Tabela FIPE consultada agora'+(ano?' | Ano minimo: '+ano:'')+'</div>';
+    h+='<div class="fipe-sub">FIPE consultada em '+new Date().toLocaleTimeString('pt-BR')+(ano?' | Ano minimo: '+ano:'')+'</div>';
     h+='<div class="fipe-row">';
     h+='<div class="fipe-card"><div class="fipe-card-lbl">FIPE - tabela publica</div><div class="fipe-card-val">'+fmt(fv)+'</div><div class="fipe-card-hint">Referencia oficial de mercado</div></div>';
     h+='<div class="fipe-card"><div class="fipe-card-lbl">Molicar estimado</div><div class="fipe-card-val">'+fmt(molicar)+'</div><div class="fipe-card-hint">Referencia revenda (-9% da FIPE)</div></div>';
     h+='</div>';
     h+='<div style="background:var(--gbg);border:1px solid var(--gborder);border-radius:var(--r);padding:12px 16px;margin-bottom:20px">';
-    h+='<div style="font-size:12px;color:var(--green);font-weight:500">Compre abaixo de '+fmt(limiteAlerta)+' para ter '+thr+'% de desconto vs FIPE</div>';
-    h+='<div style="font-size:11px;color:var(--text3);margin-top:3px">Economia de ate '+fmt(fv-limiteAlerta)+' em relacao a tabela</div>';
+    h+='<div style="font-size:13px;color:var(--green);font-weight:600">Meta de compra: abaixo de '+fmt(limiteAlerta)+'</div>';
+    h+='<div style="font-size:11px;color:var(--text3);margin-top:3px">'+thr+'% abaixo da FIPE = economia de ate '+fmt(fv-limiteAlerta)+'</div>';
     h+='</div>';
-    h+='<div class="sites-title">Buscar anuncios agora</div>';
+    h+='<div class="sites-title">Buscar anuncios nos sites</div>';
     h+='<div class="sites-grid">';
-
-    var urls=[];
-    links.forEach(function(ln){
-      var idx=urls.length;
-      urls.push(ln.url);
-      h+='<div class="site-btn" onclick="window._siteUrls && window.open(window._siteUrls['+idx+'],'_blank')">';
+    links.forEach(function(ln,i){
+      h+='<div class="site-btn" onclick="abrirSite('+i+')">';
       h+='<div class="site-dot" style="background:'+ln.cor+'"></div>';
       h+='<div class="site-btn-name">'+ln.nome+' &rarr;</div>';
       h+='<div class="site-btn-desc">'+ln.desc+'</div>';
       h+='</div>';
     });
-    h+='</div>';
-    h+='</div>';
-
+    h+='</div></div>';
     document.getElementById('main').innerHTML=h;
-    window._siteUrls=urls;
-
   }).catch(function(){
     btn.disabled=false;
     btn.innerHTML='Consultar FIPE e buscar';
